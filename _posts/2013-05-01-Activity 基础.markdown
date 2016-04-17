@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "安卓基础总结"
+title:  "Activity基础总结"
 date:   2013-05-01 11:23:32
 categories: jekyll update
 ---
 本篇文章主要是总结一下Activity的一些基础知识，主要包括：启动模式和生命周期两部分，关于其他和Activity相关的一些知识，将在以后的其它章节中进行总结。
 
 下面首先看一下`思维导图` ：
-<![Activity基础](../images/Activity基础.png)
+<![Activity基础](https://github.com/momocsdn/momocsdn.github.io/blob/master/images/Activity基础.png)
 
 
 启动模式
@@ -49,10 +49,3 @@ categories: jekyll update
   onDestroy()：在Activity被销毁之前调用，之后Activity变成销毁状态
 
   onRestart()：由停止状态变为运行状态之前调用
-
-
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
-
-[jekyll]:      http://jekyllrb.com
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-help]: https://github.com/jekyll/jekyll-help
