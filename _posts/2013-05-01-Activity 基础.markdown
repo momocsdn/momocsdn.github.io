@@ -20,7 +20,7 @@ categories: jekyll update
 
  singleInstance：主要是在多个APP共享一个Activity的时候才会使用，这种模式下会有一个单独的返回栈来管理该活动，当点击返回键的时候，当APP的栈 中所有的Activity都销毁之后，才会去销毁共享模式下的Activity
 
- ---
+ 
 
 ## 生命周期
 
