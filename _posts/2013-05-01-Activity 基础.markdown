@@ -7,10 +7,10 @@ categories: jekyll update
 本篇文章主要是总结一下Activity的一些基础知识，主要包括：启动模式和生命周期两部分，关于其他和Activity相关的一些知识，将在以后的其它章节中进行总结。
 
 下面首先看一下`思维导图` ：
-![Activity基础](https://github.com/momocsdn/momocsdn.github.io/blob/master/images/Activity基础.png)
+![Activity基础](http://7xt310.com2.z0.glb.clouddn.com/Activity%E5%9F%BA%E7%A1%80.png)
 
 
-##启动模式
+## 启动模式
 
  standard：默认的启动模式，系统不关心这个活动在该APP的返回栈里面是否存在，每次启动都会创建该活动的一个新的实例，哪怕该活动已经处于栈顶了，再次启动该活动，依然会创建新的实例
 
@@ -22,7 +22,7 @@ categories: jekyll update
 
  ---
 
-##生命周期
+## 生命周期
 
  返回栈：所有的Activity创建好之后，都是保存在一个栈里面的，方便Activity的管理
 
