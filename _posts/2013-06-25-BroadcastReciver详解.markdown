@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Activity基础总结"
-date:   2013-05-01 11:23:32
+title:  "BroadcastReciver详解"
+date:   2013-06-25 23:19:32
 categories: jekyll update
 ---
 本篇文章主要是总结一下Activity的一些基础知识，主要包括：启动模式和生命周期两部分，关于其他和Activity相关的一些知识，将在以后的其它章节中进行总结。
