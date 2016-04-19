@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Activity基础总结"
+title:  "Activity详解"
 date:   2013-05-01 11:23:32
 categories: jekyll update
 ---
