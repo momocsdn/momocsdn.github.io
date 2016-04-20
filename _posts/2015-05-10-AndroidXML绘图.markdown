@@ -1,13 +1,11 @@
 ---
 layout: post
-title:  "设计模式之策略模式"
-date:   2013-12-26 23:23:32
-categories: 设计模式
+title:  "AndroidXML绘图"
+date:   2015-05-10 22:43:36
+categories: android XML 绘图
+
 ---
 本篇文章主要是总结一下Activity的一些基础知识，主要包括：启动模式和生命周期两部分，关于其他和Activity相关的一些知识，将在以后的其它章节中进行总结。
-
-下面首先看一下`思维导图` ：
-![Activity基础](http://7xt310.com2.z0.glb.clouddn.com/Activity%E5%9F%BA%E7%A1%80.png)
 
 
 ## 启动模式
