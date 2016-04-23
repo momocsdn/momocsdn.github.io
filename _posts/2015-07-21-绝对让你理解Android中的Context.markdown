@@ -2,7 +2,7 @@
 layout: post
 title:  "绝对让你理解Android中的Context"
 date:   2015-07-21 23:51:43
-categories: 架构 设计
+categories: android 开发
 
 ---
 这个问题是StackOverFlow上面一个热门的问题What is Context in Android?

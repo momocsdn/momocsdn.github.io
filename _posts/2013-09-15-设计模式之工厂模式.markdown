@@ -1,0 +1,404 @@
+---
+layout: post
+title:  "设计模式之简单工厂模式"
+date:   2013-09-14 19:23:32
+categories: 设计模式
+---
+
+##提出疑问
+
+这几天研究工厂模式的时候，看到网上的一些文章中举的例子我就很疑惑，我相信这也是许多人的疑惑：工厂模式的功能就是创建实例，我们创建实例直接new不就完了吗，干嘛还得再封装一层工厂类，然后用工厂类再去new出这个实例？这不多此一举吗？
+
+比如我看到这样的例子，我们的用户分为金牌用户和银牌用户，我们要创建一个金牌用户或者银牌用户。
+
+####定义一个用户接口
+
+	public interface ICustomer {
+     	String describe();
+	}
+
+####金牌用户实现类
+
+	public class GoldCustomer implements ICustomer{
+
+     	@Override
+     	public String describe() {
+       	     return "金牌用户";
+     	}
+
+	}
+
+####银牌用户实现类
+
+	public class SilverCustomer implements ICustomer{
+
+   	 	 @Override
+    	 public String describe() {
+            return "银牌用户";
+     	}
+
+	}
+
+####创建用户的工厂类
+
+	public class CustomerFactory {
+  	   //创建一个金牌用户
+    	 public static ICustomer createGoldCustomer(){
+            return new GoldCustomer();
+    	 }
+  	   //创建一个银牌用户
+     public static ICustomer createSilverCustomer(){
+            return new SilverCustomer();
+    	 }
+	}
+
+####创建一个金牌用户和银牌用户
+
+	public class FactoryPattern {
+     	public static void main(String[] args) {
+            //使用工厂类创建一个金牌用户
+           ICustomer goldCustomer = CustomerFactory.createGoldCustomer();
+            //使用工厂类创建一个银牌用户
+           ICustomer silverCustomer = CustomerFactory.createSilverCustomer();
+           System. out.println( goldCustomer.describe());
+           System. out.println( silverCustomer.describe());
+     	}
+	}
+
+这里写图片描述
+
+这确实是一个工厂模式，但是我们完全可以不用工厂模式，我们可以直接在main方法里new出来不就得了吗
+
+	public class FactoryPattern {
+   	  public static void main(String[] args) {
+            //创建一个金牌用户
+           GoldCustomer goldCustomer = new GoldCustomer();
+            //创建一个银牌用户
+           SilverCustomer silverCustomer = new SilverCustomer();
+           System. out.println( goldCustomer.describe());
+           System. out.println( silverCustomer.describe());
+    	 }
+	}
+
+结果是一样的
+这里写图片描述
+
+这个例子确实是用的工厂模式，但这并没有体现出工厂模式的优点啊，感觉不用它倒是更方便了！所以有些人看完这个例子后就觉得工厂模式根本没用，以后不用就好了！
+
+一个非常贴近生活的例子来告诉你什么是工厂模式
+
+但是工厂模式真的是个累赘吗？其实并不是！他能够作为一种设计模式流传至今，一定是有他的道理的！只不过我们看到的例子只能说明工厂模式是什么，并不能很好说明工厂模式的优点，所以我们学会后并不知道为什么要使用工厂模式，以及什么时候应该去使用工厂模式！
+
+其实工厂模式在我们的现实生活中非常常见，下面我举个生活中的例子，大家应该就能明白工厂模式的用处在哪里了！
+
+麦当劳大家都吃过吧？我们去点餐的时候，我们可以点一个汉堡，一杯可乐，一个薯条。我们还可以点一杯可乐，一个薯条。点完之后点餐员会问我们一句还要别的吗？你说不要了！ 然后你的这一份餐就点完了，可以给钱了。咦，我们发现这是一个建造者模式（Builder Pattern）啊！
+
+（ps：这确实是突然发现的，之前写建造者模式那篇文章的时候并没有想到这个例子）
+到现在我们的工厂模式还没有出现，那就先来巩固一下建造者模式吧~反正一会儿和工厂模式也不冲突
+
+假设我们只提供三种类型的食物：汉堡、饮料、小吃
+
+汉堡（巨无霸、吉士汉堡、双层吉士汉堡）
+
+	/**
+	 * 汉堡
+ 	 */
+ 	public interface IBurgers {
+     String makeBurger();
+	}
+
+	public class BigMac implements IBurgers{
+
+     	@Override
+     	public String makeBurger() {
+            return "巨无霸";
+     	}
+
+	}
+
+	public class CheeseBurger implements IBurgers{
+
+    	 @Override
+    	 public String makeBurger() {
+            return "吉士汉堡包" ;
+    	 }
+	}
+
+	public class DoubleCheeseBurger implements IBurgers{
+
+   	  	@Override
+   	  	public String makeBurger() {
+            return "双层吉士汉堡" ;
+     	}
+	}
+
+	饮料（可乐，牛奶，橙汁）
+
+	/**
+	 * 饮料
+	 */
+	public interface IBeverages {
+      String makeDrinking();
+	}
+
+	public class Coke implements IBeverages{
+
+  	   @Override
+  	   public String makeDrinking() {
+            return "可乐";
+    	 }
+
+	}
+
+	public class Milk implements IBeverages{
+
+    	 @Override
+   		 public String makeDrinking() {
+            return "牛奶";
+    	 }
+
+	}
+
+	public class OrangeJuice implements IBeverages{
+
+    	 @Override
+    	 public String makeDrinking() {
+            return "橙汁";
+    	 }
+
+	}
+
+	小吃（奶昔、巧克力奶昔、苹果派）
+
+	/**
+	 * 小吃
+ 	 */
+	public interface ISnacks {
+   	  String makeSnack();
+	}
+
+	public class MilkShack implements ISnacks{
+
+     @Override
+     public String makeSnack() {
+            return "奶昔";
+     }
+
+	}
+
+	public class ChocolateShack implements ISnacks{
+
+     @Override
+     public String makeSnack() {
+            return "巧克力奶昔" ;
+     }
+
+	}
+
+	public class ApplePie implements ISnacks{
+
+     @Override
+     public String makeSnack() {
+            return "苹果派";
+     }
+
+	}
+
+	好了，食物都准备好了之后，我们还要创建一个订单类，因为这些食物都是客户自选组合的，所以我们的订单类可以使用建造者设计模式
+
+	public class Order {
+     private IBurgers mBurger;
+     private IBeverages mBeverages;
+     private ISnacks mSnack;
+
+     private Order(OrderBuilder builder){
+            mBurger = builder. mBurger;
+            mBeverages = builder. mBeverages;
+            mSnack = builder. mSnack;
+     }
+
+
+	public String makeOrder(){
+           StringBuilder sb = new StringBuilder();
+            if ( mBurger!= null) {
+                 sb.append( mBurger.makeBurger()).append( " ");
+           }
+            if ( mBeverages!= null) {
+                 sb.append( mBeverages.makeDrinking()).append( " ");
+           }
+            if ( mSnack!= null) {
+                 sb.append( mSnack.makeSnack());
+           }
+            return sb.toString();
+     }
+
+     public static class OrderBuilder{
+            private IBurgers mBurger;
+            private IBeverages mBeverages;
+            private ISnacks mSnack;
+            public OrderBuilder(){
+
+           }
+            public OrderBuilder addBurger(IBurgers burgers){
+                 this. mBurger = burgers;
+                 return this;
+           }
+            public OrderBuilder addBeverage(IBeverages beverages){
+                 this. mBeverages = beverages;
+                 return this;
+           }
+            public OrderBuilder addSnack(ISnacks snacks){
+                 this. mSnack = snacks;
+                 return this;
+           }
+            public Order build(){
+                 return new Order( this);
+           }
+     }
+}
+
+这篇文章并不是讲解建造者模式，如果大家有对建造者模式不懂得可以去看我的另一篇文章Android设计模式之建造者模式(builder pattern)
+
+好了现在我们来了一个顾客，他点了双层吉士汉堡+可乐+巧克力奶昔
+
+	public class McDonald {
+     public static void main(String[] args) {
+           Order order = new Order.OrderBuilder()
+                                           .addBurger( new DoubleCheeseBurger())
+                                           .addBeverage( new Coke())
+                                           .addSnack( new ChocolateShake())
+                                           .build();
+           System. out.println( order.makeOrder());
+     }
+	}
+
+	这里写图片描述
+
+	这时候又进来一个顾客，他只是走路走累了，只想点一杯可乐
+
+	public class McDonald {
+     public static void main(String[] args) {
+           Order order = new Order.OrderBuilder()
+                                           .addBeverage( new Coke())
+                                           .build();
+           System. out.println( order.makeOrder());
+     }
+	}
+
+	这里写图片描述
+
+	这时候又进来一个顾客，他也不知道自己到底想吃什么，我们也有过这种情况吧？不知道吃什么怎么办，那就来一个巨无霸套餐把！
+
+	工厂模式出现
+
+	我们的工厂模式来了！套餐就是人家给你配好的一份订单，你要点巨无霸套餐，人家就直接把巨无霸+可乐+苹果派给你端上来。就不用我们自己去一个一个选了！是不是很方便！现在我们写一个订单工厂类
+
+	public class OrderFactory {
+     //创建一份巨无霸套餐
+     public static Order createBigMacCombo(){
+            return new  Order.OrderBuilder()
+                                .addBurger( new BigMac())
+                                .addBeverage( new Coke())
+                                .addSnack( new ApplePie())
+                                .build();
+     }
+	}
+
+当我们的顾客来了，说要一份巨无霸套餐，我们只需要这样生成订单
+
+public class McDonald {
+     public static void main(String[] args) {
+           Order order = OrderFactory. createBigMacCombo();
+           System. out.println( order.makeOrder());
+     }
+}
+
+这里写图片描述
+
+使用工厂模式，订单生成的操作交给我们订单工厂去做，我们的顾客不用自己去配食物，点餐员只需要一键生成一份巨无霸套餐就可以了！
+
+我们也可以多添加几份套餐供顾客选择
+
+	public class OrderFactory {
+     //创建一份巨无霸套餐(巨无霸+可乐+苹果派)
+     public static Order createBigMacCombo(){
+            return new Order.OrderBuilder()
+                                .addBurger( new BigMac())
+                                .addBeverage( new Coke())
+                                .addSnack( new ApplePie())
+                                .build();
+     }
+     //创建一份吉士汉堡套餐(吉士汉堡+牛奶+奶昔)
+     public static Order createCheeseBurgerCombo(){
+            return new Order.OrderBuilder()
+                                .addBurger( new CheeseBurger())
+                                .addBeverage( new Milk())
+                                .addSnack( new MilkShake())
+                                .build();
+     }
+     //创建一份双层吉士汉堡套餐(双层吉士汉堡+橙汁+巧克力奶昔)
+     public static Order createDoubleBurgerCombo(){
+            return new Order.OrderBuilder()
+                                .addBurger( new DoubleCheeseBurger())
+                                .addBeverage( new OrangeJuice())
+                                .addSnack( new ChocolateShake())
+                                .build();
+     }
+	}
+Android源码中工厂模式的体现
+
+我们都是用过线程池对吧，我们创建一个线程池的时候可以这样创建
+
+	ExecutorService es = Executors.newCachedThreadPool();
+
+其实这个Executors就是一个工厂类！他的作用就和我们上个例子中的订单工厂OrderFactory一样一样的，我们可以看一看
+
+	public class Executors {
+    	public static ExecutorService newFixedThreadPool(int nThreads) {
+       		return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>());
+   		}
+
+
+    	public static ExecutorService newWorkStealingPool(int parallelism) {
+        	return new ForkJoinPool
+          	  	(parallelism,
+             	ForkJoinPool.defaultForkJoinWorkerThreadFactory,
+             	null, true);
+    	}
+
+
+    	public static ExecutorService newWorkStealingPool() {
+        	return new ForkJoinPool
+            	(Runtime.getRuntime().availableProcessors(),
+             	ForkJoinPool.defaultForkJoinWorkerThreadFactory,
+             	null, true);
+    	}
+
+
+    public static ExecutorService newFixedThreadPool(int nThreads, ThreadFactory threadFactory) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>(),
+                                      threadFactory);
+    }
+
+
+    public static ExecutorService newSingleThreadExecutor() {
+        return new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>()));
+    }
+ //.....还有很多个
+ //这其中每一个方法就是一个套餐！
+
+我们看到其中每一个方法中都是new了一个ThreadPoolExecutor，这才是真正的线程池，它里面有很多个参数我们可以进行配置，但是有时候我们根本不用自己去配置，直接到Executors工厂类中选择一种我们需要的套餐就可以了！省去了复杂的配置过程！这就是Android系统中的工厂模式的体现。和我们的麦当劳是一个意思！
+
+总结
+
+所以工厂模式并不是简简单单的在我们new一个对象外边再包一层工厂类这么简单，他的存在是有他存在的道理的，如果我们只是简简单单new个对象，何必还用工厂模式这么麻烦呢，直接new不就成了吗。通过麦当劳和线程池这个例子，我想大家对于工厂模式的存在意义都心中有数了吧！
+
+
+  ---
