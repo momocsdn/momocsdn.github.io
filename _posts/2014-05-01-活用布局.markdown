@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "活用布局"
+date:   2014-05-01 11:31:35
+categories: android 布局 技巧
+
+---
+## 前言
+> android布局相关的一些小技巧总结
+
+## 思维导图
+![](http://7xt310.com2.z0.glb.clouddn.com/%E6%B4%BB%E7%94%A8%E5%B8%83%E5%B1%80.png)
