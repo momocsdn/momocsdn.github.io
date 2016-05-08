@@ -2,7 +2,7 @@
 layout: post
 title:  "获取坐标值的各种方法"
 date:   2015-02-08 21:31:44
-categories: 并发编程
+categories: android 坐标系
 
 ---
 ## 前言
