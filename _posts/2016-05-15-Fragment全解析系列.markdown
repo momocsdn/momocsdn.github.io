@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Fragment全解析系列"
-date:   2016-05-15 019:34:31
+date:   2016-05-15 19:34:31
 categories: android UI fragment
 
 ---
