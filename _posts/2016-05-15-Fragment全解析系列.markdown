@@ -6,7 +6,8 @@ categories: android UI fragment
 
 ---
 ## 前言
-> 这是最近读到的几篇文章总结的一些Fragment相关的知识，大多都是平时开发中遇到的，就是到目前为止还有一些问题没有解决：就是Viewpager+Fragment在小米4顶配版有时候会黑屏，有知道解决方案的小伙伴可以发送邮件：momocsdn@163.com,在此感激不尽！
+
+这是最近读到的几篇文章总结的一些Fragment相关的知识，大多都是平时开发中遇到的，就是到目前为止还有一些问题没有解决：就是Viewpager+Fragment在小米4顶配版有时候会黑屏，有知道解决方案的小伙伴可以发送邮件：momocsdn@163.com,在此感激不尽！
 
 ## 思维导图
 ![](http://7xt310.com1.z0.glb.clouddn.com/Fragment%E5%85%A8%E8%A7%A3%E6%9E%90%E7%B3%BB%E5%88%97.png)

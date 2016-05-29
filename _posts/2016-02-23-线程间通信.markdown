@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "线程间通信"
+date:   2016-02-23 23:31:28
+categories: java 多线程
+
+---
+
+## 前言
+
+Java多线程编程核心技术读书笔记之第三篇：线程间通信
+
+## 思维导图
+![](http://7xt310.com1.z0.glb.clouddn.com/%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1.png)

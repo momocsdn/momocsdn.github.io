@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "对象及变量的并发访问"
+date:   2016-02-16 23:30:58
+categories: java 多线程
+
+---
+
+## 前言
+
+Java多线程编程核心技术读书笔记之第二篇：对象及变量的并发访问
+
+## 思维导图
+![](http://7xt310.com1.z0.glb.clouddn.com/%E5%AF%B9%E8%B1%A1%E5%8F%8A%E5%8F%98%E9%87%8F%E7%9A%84%E5%B9%B6%E5%8F%91%E8%AE%BF%E9%97%AE.png)
